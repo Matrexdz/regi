@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #f7f7f7;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,12 +18,13 @@
         }
 
         .game-container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
-            max-width: 100%;
+            max-width: 350px;
+            width: 100%;
         }
 
         .game-area {
@@ -33,15 +34,15 @@
             height: 300px;
             border: 2px solid #ddd;
             margin: 0 auto 20px;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
             background: linear-gradient(to bottom, #e0eafc, #cfdef3);
         }
 
         .plane {
-            width: 50px;
-            height: 50px;
-            background-image: url('https://example.com/red-plane.png'); /* ضع رابط صورة الطائرة هنا */
+            width: 60px;
+            height: 60px;
+            background-image: url('https://www5.0zz0.com/2024/07/29/15/849675179.png'); /* Replace with actual image URL */
             background-size: contain;
             background-repeat: no-repeat;
             position: absolute;
@@ -55,9 +56,9 @@
             width: 100%;
             text-align: center;
             top: 20%;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            color: green;
+            color: #28a745;
         }
 
         .message {
@@ -67,7 +68,7 @@
             top: 40%;
             font-size: 24px;
             font-weight: bold;
-            color: red;
+            color: #dc3545;
         }
 
         .server-message {
@@ -76,7 +77,13 @@
             text-align: center;
             top: 60%;
             font-size: 18px;
-            color: blue;
+            color: #007bff;
+        }
+
+        h1 {
+            margin: 0 0 20px;
+            font-size: 32px;
+            color: #333;
         }
     </style>
 </head>
@@ -109,11 +116,11 @@
             serverMessage.textContent = '';
 
             if (!isConnectedToServer) {
-                serverMessage.textContent = 'أت غير متصل ب السيرفر أرجو أن تسجل حساب جديد بهاذا برمو كود: 1x_1985246';
+                serverMessage.textContent = 'أنت غير متصل ب السيرفر أرجو أن تسجل حساب جديد بهاذا برمو كود: 1x_1985246';
             }
             
             interval = setInterval(() => {
-                height += 5;
+                height += 	1	;
                 plane.style.bottom = height + 'px';
                 
                 let multiplier = (height / 89).toFixed(2);
@@ -122,14 +129,14 @@
                 if (Math.random() < 0.01) {
                     endGame();
                 }
-            }, 100);
+            }, 27);
         }
 
         function endGame() {
             clearInterval(interval);
             gameStarted = false;
 
-            setTimeout(startGame, 20000); // Start new game after 20 seconds
+            setTimeout(startGame, 10000); // Start new game after 20 seconds
         }
 
         startGame(); // Start the first game when the page loads
