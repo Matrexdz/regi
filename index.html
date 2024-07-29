@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviator Game Online for Real Money</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .game-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .game-area {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            border: 2px solid #ddd;
+            margin: 0 auto 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #e0eafc, #cfdef3);
+        }
+
+        .plane {
+            width: 50px;
+            height: 50px;
+            background-image: url('https://example.com/red-plane.png'); /* ضع رابط صورة الطائرة هنا */
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .multiplier {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 20%;
+            font-size: 24px;
+            font-weight: bold;
+            color: green;
+        }
+
+        .message {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 40%;
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .server-message {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 60%;
+            font-size: 18px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Aviator Game</h1>
+        <div class="game-area">
+            <div id="plane" class="plane"></div>
+            <div id="multiplier" class="multiplier">X1</div>
+            <div id="message" class="message"></div>
+            <div id="serverMessage" class="server-message"></div>
+        </div>
+    </div>
+    <script>
+        let plane = document.getElementById('plane');
+        let message = document.getElementById('message');
+        let multiplierDisplay = document.getElementById('multiplier');
+        let serverMessage = document.getElementById('serverMessage');
+
+        let height = 0;
+        let interval;
+        let gameStarted = false;
+        let isConnectedToServer = false; // Replace with actual server connection status
+
+        function startGame() {
+            height = 0;
+            gameStarted = true;
+            message.textContent = '';
+            multiplierDisplay.textContent = 'X1';
+            serverMessage.textContent = '';
+
+            if (!isConnectedToServer) {
+                serverMessage.textContent = 'أت غير متصل ب السيرفر أرجو أن تسجل حساب جديد بهاذا برمو كود: 1x_1985246';
+            }
+            
+            interval = setInterval(() => {
+                height += 5;
+                plane.style.bottom = height + 'px';
+                
+                let multiplier = (height / 89).toFixed(2);
+                multiplierDisplay.textContent = `X${multiplier}`;
+                
+                if (Math.random() < 0.01) {
+                    endGame();
+                }
+            }, 100);
+        }
+
+        function endGame() {
+            clearInterval(interval);
+            gameStarted = false;
+
+            setTimeout(startGame, 20000); // Start new game after 20 seconds
+        }
+
+        startGame(); // Start the first game when the page loads
+    </script>
+</body>
+</html>
