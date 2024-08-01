@@ -194,13 +194,13 @@
                 if (Math.random() < 0.01) {
                     endGame();
                 }
-            }, 27);
+            }, 13);
         }
 
         function endGame() {
             clearInterval(interval);
             gameStarted = false;
-            let countdown = 15;
+            let countdown = 9;
             countdownNumber.textContent = countdown;
 
             let countdownInterval = setInterval(() => {
